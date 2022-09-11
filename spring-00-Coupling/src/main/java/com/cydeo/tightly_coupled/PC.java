@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class PC {
 
-    private DellCase theCase;
+    private DellCase theCase; //tight dependency on DellCase, required loose dependency on Case theCase;
     private AcerMonitor monitor;
     private AsusMotherboard motherboard;
 
