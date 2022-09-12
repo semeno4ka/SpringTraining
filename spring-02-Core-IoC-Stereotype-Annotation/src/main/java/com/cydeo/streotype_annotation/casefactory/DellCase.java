@@ -1,5 +1,8 @@
 package com.cydeo.streotype_annotation.casefactory;
 
+import org.springframework.stereotype.Component;
+
+@Component // instead of beans, just use one annotation
 public class DellCase extends Case  {
 
     public DellCase() {
