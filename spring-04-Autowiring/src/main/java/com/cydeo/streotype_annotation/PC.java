@@ -4,10 +4,12 @@ import com.cydeo.streotype_annotation.casefactory.Case;
 import com.cydeo.streotype_annotation.monitorfactory.Monitor;
 import com.cydeo.streotype_annotation.motherboardfactory.Motherboard;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Getter
+@Setter
 @Component
 public class PC {
 
@@ -17,7 +19,7 @@ public class PC {
 
     private Motherboard motherboard;
 @Autowired// starting Spring 4.3 whenever you have a Constructor, autowired is no longer needed
-//just keep placing compnents
+//just keep placing components
     public PC(Case theCase, Monitor monitor, Motherboard motherboard) {
         this.theCase = theCase;
         this.monitor = monitor;
