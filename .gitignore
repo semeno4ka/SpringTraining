@@ -1,3 +1,4 @@
 /spring-01-Core-IoC-Bean-Annotation/target/
 /.idea/
 *.iml
+/spring-10-Thymeleaf/.gitignore
