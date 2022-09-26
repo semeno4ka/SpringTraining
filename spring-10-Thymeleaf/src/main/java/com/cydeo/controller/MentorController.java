@@ -27,8 +27,8 @@ public class MentorController {
 @PostMapping("/confirm")
     public String submitForm(@ModelAttribute("mentor") Mentor mentor){
 //how to access "mentor" attribute in this method
-
-        return "mentor/mentor-confirmation";
+    // after you submit, you will see new empty object
+        return "redirect:/mentor/register";// go to previous END point
 }
 
 
