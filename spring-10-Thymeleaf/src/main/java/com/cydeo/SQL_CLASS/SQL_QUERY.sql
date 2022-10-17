@@ -180,3 +180,51 @@ select*from agileTeam;
 --How to delete all the data? TRUNCATE and DROP
 TRUNCATE TABLE agileTeam;--table exists, no data inside
 DROP TABLE agileTeam;-- the entire table is deleted
+
+--creating our own tables. Commands work just one time
+-- create tableName ( colN1 DataType Constraints, cilN2 DataType Constraints(optional), colN3 DataType Constraints)
+
+CREATE TABLE ScrumTeam(
+                          empl_id Integer PRIMARY KEY,-- first column
+                          first_name varchar (30) Not NULL,-- (30)- how many characters can be accepted
+                          last_name varchar(30),
+                          job_title varchar(20)
+);
+Select*from scrumTeam;
+--insert information
+-- INSERT INTO tableName(colN1,colN2..) VALUES (value1,value2)
+INSERT INTO ScrumTeam(empl_id, first_name, last_name, job_title) -- mandatory are those, which have Not Null and PrimaryKey constraints
+VALUES(1,'Severus','Snape','Tester');-- in order to check whether the input was successful, you have to select*from
+INSERT INTO ScrumTeam VALUES(2,'Harry','Potter','Developer');-- if you do not specify columns, it will understand that you fill out all of them
+INSERT INTO ScrumTeam VALUES (3,'Phoebe','Buffay','ScrumMaster');
+insert into ScrumTeam VALUES (4,'Michael','Jackson','PO');
+
+--How to UPDATE tables?
+--UPDATE tableName SET colN1 = value1, colN2 = value2,... WHERE condition...;
+UPDATE ScrumTeam SET job_title='DevOps' where empl_id=4;-- to check changes, select*from
+
+
+--How to DELETE
+-- DELETE FROM tableName  WHERE condition;
+DELETE FROM ScrumTeam WHERE empl_id=3;
+
+commit;-- to save data after changes, checkpoint
+Select*from scrumTeam;
+--How to add a column or change existing column name?
+--ALTER TABLE tableName action;
+--Add
+ALTER TABLE scrumteam ADD salary Integer;-- add column, value null
+UPDATE ScrumTeam SET salary=12000 WHERE empl_id=1;
+UPDATE ScrumTeam SET salary=10000 WHERE empl_id=2;
+UPDATE ScrumTeam SET salary=11000 WHERE empl_id=4;
+--Change column name
+ALTER TABLE scrumteam RENAME COLUMN salary TO annual_salary;
+
+--Delete/drop the full column
+ALTER TABLE scrumteam DROP COLUMN annual_salary;
+--Rename table
+ALTER TABLE scrumteam RENAME TO agileTeam;-- all the precious commands will give error, because it is no longer existing table
+select*from agileTeam;
+--How to delete all the data? TRUNCATE and DROP
+TRUNCATE TABLE agileTeam;--table exists, no data inside
+DROP TABLE agileTeam;-- the entire table is deleted
