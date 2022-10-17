@@ -307,3 +307,34 @@ END
 $$;
 
 select*from get_employees_managed_by_id(100);
+
+
+--write a procedure that will accept 2 params, emp_id, job_title , it will update that employee job title
+--based on what we provide
+
+CREATE OR REPLACE PROCEDURE update_jobTitle_by_id(empId integer, job_title varchar)
+    language plpgsql
+AS
+$$
+BEGIN
+UPDATE scrumteam
+SET jobtitle = job_title
+WHERE emp_id = empId;
+
+END
+$$;
+call update_jobTitle_by_id(4,'Spring Developer');
+DROP PROCEDURE update_jobTitle_by_id(empId integer, job_title varchar);
+CREATE OR REPLACE PROCEDURE update_jobTitle_by_id(empId integer, job_title varchar)
+    language plpgsql
+AS
+$$
+BEGIN
+UPDATE scrumteam
+SET jobtitle = job_title
+WHERE emp_id = empId;
+
+END
+$$;
+call update_jobTitle_by_id(4,'Spring Developer');
+select*from scrumteam;
