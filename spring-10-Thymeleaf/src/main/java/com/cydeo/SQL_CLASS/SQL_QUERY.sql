@@ -228,3 +228,82 @@ select*from agileTeam;
 --How to delete all the data? TRUNCATE and DROP
 TRUNCATE TABLE agileTeam;--table exists, no data inside
 DROP TABLE agileTeam;-- the entire table is deleted
+
+-- SET OPERATORS UNION, UNION ALL, EXCEPT, INTERSECTIONS
+
+select*from testers
+UNION --removes duplicate rows and sorts
+select*from developers;
+
+select*from testers
+UNION ALL --places data as is
+select*from developers;
+
+select names from developers
+EXCEPT-- will return what is NOT common from 1st compared to second
+select names from testers;
+
+select names from developers
+INTERSECT-- return common from both(whatever columns you input, all selected should match)
+select names from testers;
+
+--INDEX
+EXPLAIN ANALYSE  select*from towns where name='f0f4c9ac8812aea93a791710464a45dc';--get all the info about particular town
+--execution time 43 ms
+EXPLAIN ANALYSE select*from towns where id='7';
+--execution time 0.2 ms
+
+CREATE INDEX idx_towns_name ON towns(name);-- will increase the search result based on name column
+
+--how to drop index?
+DROP INDEX IF EXISTS idx_towns_name;
+
+--how to check available indexes in DB?
+SELECT
+    tablename,
+    indexname,
+    indexdef
+FROM
+    pg_indexes
+WHERE
+        schemaname = 'public'
+ORDER BY
+    tablename,
+    indexname;
+
+--FUNCTIONS
+
+--how to write a function?
+create or replace function get_jobId_count_by_name(job_name varchar)
+returns int
+language plpgsql
+as $$DECLARE
+     jobId_count integer;
+Begin
+select count(*) into jobId_count from employees where job_id=job_name;
+return jobId_count;
+END
+$$;
+
+select get_jobId_count_by_name('IT_PROG');
+
+-- can also be dropped
+Drop function get_jobId_count_by_name(job_name varchar);
+
+--return employees managed by specific manager -return table
+create or replace function get_employees_managed_by_id(mngr_id integer)
+    returns table
+    (
+        employee_firstname varchar,
+        employee_lastname varchar
+    )
+    language plpgsql
+as $$
+Begin
+Return query
+select first_name,last_name from employees  where manager_id=mngr_id;
+
+END
+$$;
+
+select*from get_employees_managed_by_id(100);
