@@ -464,3 +464,17 @@ select first_name, last_name,e.department_id,department_name from employees e le
 --11. Display all employee and their manager's names
 select e1.first_name||' '||e1.last_name as employee_name, e2.first_name||' '||e2.last_name as manager_name
 from employees e1 left join employees e2 on e1.manager_id = e2.employee_id;
+
+
+
+--Assignmert 3
+--1-Can you display sales person names ending with “th”?
+select sp_name from salesperson where sp_name like '%th';
+--2-Can you display company names for company_id 21,32,412,43,25 ?
+select company_name from company where company_id in( 21,32,412,43,25);
+--How many Sales person we have in total ?
+select count(*) from salesPerson;
+--4-Can you display the sales person name who made a sale to company name  “Walmart”?
+select sp_name from salesPerson s1 join sales s2 on s1.sp_id=s2.sp_id JOIN company c On s2.company_id=c.company_id where company_name='Walmart';
+--5-Can you display average sales amount for each sales person id?
+select avg(amount),sp_id from sales group by sp_id ;
