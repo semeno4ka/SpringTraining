@@ -387,3 +387,80 @@ CREATE TRIGGER last_name_change
 UPDATE mentors
 SET last_name = 'XYZ'
 WHERE id = 2;
+
+
+--PRACTICE TASKS
+select*from employees;
+--1. List all the employees' first and last name with their salary in employees table
+select first_name, last_name, salary from employees;
+--2. how many employees have salary less than 5000?
+select count(*) from employees where salary<5000;
+--3. how many employees have salary between 6000 and 7000?
+select count(*) from employees where salary>=6000 and salary<=7000;
+select count(*) from employees where salary BETWEEN 6000 AND 7000;
+--4. List all the different region_ids in countries table
+select distinct region_id from countries;
+--5. display the salary of the employee Grant Douglas (lastName: Grant,  firstName: Douglas)
+select salary from employees where first_name='Douglas' and last_name='Grant';
+--6. display the maximum salary in employees table
+select max(salary) from employees;
+--7. display all informations of the employee who has the highest salary in employees table
+select*from employees where salary=(select Max(salary) from employees);
+--8. display the the second maximum salary from the employees table
+select max(salary) from employees where salary<(select max(salary) from employees);
+--9. display all informations of the employee who has the second highest salary
+select*from employees where salary=(select max(salary) from employees where salary <(select max(salary) from employees));
+--10
+select min(salary) from employees;
+--11. display all informations of the employee who has the minimum salary in employees table
+select*from employees where salary=(select min(salary) from employees);
+--12
+select min(salary) from employees where salary>(select min(salary) from employees);
+--13. display all informations of the employee who has the second minimum salary
+select*from employees where salary=(select min(salary) from employees where salary>(select min(salary) from employees));
+--14. display the average salary of the employees;
+select avg(salary) from employees;
+--15. list all the employees who are making above the average salary;
+select*from employees where salary>(select avg(salary) from employees);
+--16. list all the employees who are making less than the average salary
+select*from employees where salary<(select avg(salary) from employees);
+--17. count the total numbers of the departments in departs table
+select count(*) from departments;
+--18. sort the start_date in ascending order in job_history's table
+select*from job_history ORDER BY start_date;
+--19. sort the start_date in descending order in job_history's table
+select*from job_history ORDER BY start_date DESC;
+--20. list all the employees whose first name starts with 'A'
+select*from employees where first_name like 'A%';
+--21. list all the employees whose job_ID contains 'IT'
+select*from employees where job_id like '%IT%';
+--22. list all the employees whose department id in 50, 80, 100
+select*from  employees where department_id IN(50,80,100);
+
+--Assignment 2
+--1. Show all job_id and average salary who work as any of these jobs IT_PROG, SA_REP, FI_ACCOUNT, AD_VP
+select job_id, avg(salary) from employees group by job_id having job_id IN  ('IT_PROG','SA_REP' ,'FI_ACCOUNT' ,'AD_VP');
+--2. Show all records whose last name contains 2 lowercase 'a's
+select*from employees where last_name like '%a%a%';
+--3. Display max salary  for each department
+select max(salary), department_id from employees group by department_id;
+--4. Display total salary for each department except department_id 50, and where total salary >30000
+SELECT department_id, SUM(salary)
+FROM employees
+GROUP BY department_id
+HAVING SUM(salary) > 30000 AND department_id != 50;
+--5. Write a SQL query that returns first and last name any employees who started job between 1-JAN-2000 and 3-SEP-2007 from the hr database
+select first_name, last_name from employees where hire_date BETWEEN '1-JAN-2000 ' AND '3-SEP-2007';
+--6. Display country_id, country name, region id, region name from hr database
+SELECT country_id, country_name,c.region_id,region_name FROM countries c JOIN regions r ON c.region_id = r.region_id;
+--7. Display All cities, country names from hr database
+select city, country_name from countries c join locations l on c.country_id = l.country_id;
+--8. display the first name, last name, department number, and department name,  for all employees for departments 80 or 40.
+select first_name, last_name, e.department_id,department_name from employees e join departments d on e.department_id = d.department_id where d.department_id in(80,40);
+--9. Display employees' first name, Lastname department id and all departments including those where do not have any employee.
+select first_name, last_name, d.department_id from employees e right outer join departments d on e.department_id = d.department_id;
+--10. Display the first name, last name, department number, and name, for all employees who have or have not any department
+select first_name, last_name,e.department_id,department_name from employees e left join departments d on e.department_id = d.department_id;
+--11. Display all employee and their manager's names
+select e1.first_name||' '||e1.last_name as employee_name, e2.first_name||' '||e2.last_name as manager_name
+from employees e1 left join employees e2 on e1.manager_id = e2.employee_id;
