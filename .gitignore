@@ -2,3 +2,4 @@
 /.idea/
 *.iml
 /spring-10-Thymeleaf/.gitignore
+/spring-11-DataCreation/.gitignore

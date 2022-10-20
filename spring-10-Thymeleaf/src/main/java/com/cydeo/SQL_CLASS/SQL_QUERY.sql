@@ -388,6 +388,15 @@ UPDATE mentors
 SET last_name = 'XYZ'
 WHERE id = 2;
 
+--IF STATEMENTS
+select first_name,salary,
+       CASE WHEN salary<7000 THEN 'UNPAID'
+       WHEN salary>7000 THEN 'PAID WELL'
+       ELSE 'UNPAID'
+END AS category--name of the column we created
+from employees;
+
+
 
 --PRACTICE TASKS
 select*from employees;
