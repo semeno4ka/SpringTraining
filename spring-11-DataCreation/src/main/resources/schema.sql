@@ -1,3 +1,4 @@
+DROP TABLE if exists employees;
 create table EMPLOYEES (
 
     id bigint not null,
