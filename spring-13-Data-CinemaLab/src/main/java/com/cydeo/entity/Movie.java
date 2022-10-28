@@ -13,8 +13,6 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-
-
 public class Movie extends BaseEntity {
 
     private String name;
@@ -29,16 +27,20 @@ public class Movie extends BaseEntity {
     private MovieState state;
     private BigDecimal price;
     @ManyToMany
-    //for third table created from movie and genre, specify the name of the table and columns
-    @JoinTable(name = "movie_genre-rel",
-            joinColumns = @JoinColumn(name="movie_id"),
-            inverseJoinColumns=@JoinColumn(name ="genre_id"))
+    @JoinTable(name = "movie_genre_rel",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private List<Genre> genreList;
-    /*if we use List, in case of deletion, all will be deleted, and then added again, except the one we wanted to delete
-    If you use Set, it will delete the specified book from the auther, query will be more specific behind the scene
-     */
 
 
 
 
 }
+
+//for third table created from movie and genre, specify the name of the table and columns
+
+    /*if we use List, in case of deletion, all will be deleted, and then added again, except the one we wanted to delete
+    If you use Set, it will delete the specified book from the auther, query will be more specific behind the scene
+     */
+
+
