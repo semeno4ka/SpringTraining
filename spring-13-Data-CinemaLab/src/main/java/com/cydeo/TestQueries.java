@@ -42,7 +42,8 @@ public class TestQueries implements CommandLineRunner {
         System.out.println("findByAgeLessThanEqual"+accountRepository.findByAgeLessThanEqual(35));
         System.out.println("findByRole"+accountRepository.findByRole(UserRole.USER));
         System.out.println("findByAgeBetween"+accountRepository.findByAgeBetween(30,45));
-        System.out.println("findByAddressStartingWith"+accountRepository.findByAddressStartsWithAndAddressContaining("262","Loch"));
+        System.out.println("findByAddressStartingWith"+accountRepository.findByAddressStartsWith("262"));
+        System.out.println("findByOrderByAge"+accountRepository.findByOrderByAge());
        //find by age and sort by age
         System.out.println("retrieveAccounts"+accountRepository.retrieveAccounts());
         System.out.println("retrieveAdminAccount"+accountRepository.retrieveAdminAccount());
@@ -56,7 +57,7 @@ public class TestQueries implements CommandLineRunner {
       //  System.out.println("findByCountry"+cinemaRepository.findByLocationEquals("United States"));
         System.out.println("findByNameOrSponsoredName"+cinemaRepository.findByNameOrSponsoredName("Empire","Kodak"));
         System.out.println("retrieveNameById"+cinemaRepository.retrieveNameById(2L));
-        System.out.println("findCinemaByNames"+cinemaRepository.findCinemaByNames("EMPIRE","Kodak"));
+        System.out.println("findCinemaByNames"+cinemaRepository.findCinemaByNames("EMPIRE"));
         System.out.println("retrieveSortCinema"+cinemaRepository.retrieveSortCinema());
       //distinct
         System.out.println("------------------GENRE-------------------");

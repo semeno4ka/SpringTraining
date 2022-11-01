@@ -60,6 +60,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     //Write a native query to read all accounts that a specific value can be containable in the name, address, country, state city
     @Query( value = "SELECT*FROM account_details ad WHERE name ILIKE concat('%',?1,'%') OR address ILIKE concat('%',?1,'%') OR country ILIKE concat('%',?1,'%') OR ad.state ILIKE concat('%',?1,'%') OR city ILIKE concat('%',?1,'%') ", nativeQuery = true)
     List<Account> retrieveBySpecificKey(@Param("pattern")String pattern);// can use with @Param("age") integer age as a habit
+    //can't do '%?1%' will check what's inside '', need to use concat and separately all, can also do '%'||?1||'%
 
     //Write a native query to read all accounts with an age higher than a specific value
     @Query(value = "SELECT*FROM account_details WHERE age>?1", nativeQuery = true)
