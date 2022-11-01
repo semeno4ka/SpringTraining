@@ -77,13 +77,13 @@ public class TestQueries implements CommandLineRunner {
         System.out.println("-------------------USER--------------------");
         System.out.println("findByEmail"+userRepository.findByEmail("josie_story@email.com"));
         System.out.println("findByUsername"+userRepository.findByUsername("josieStory"));
-        System.out.println("findByName"+userRepository.findByUsernameContaining("faith"));
-        System.out.println("findByUsernameContainingIgnoreCase"+userRepository.findByUsernameContainingIgnoreCase("faith"));
+        System.out.println("findByName"+userRepository.findByAccountNameContaining("faith"));
+        System.out.println("findByUsernameContainingIgnoreCase"+userRepository.findAllByAccountNameContainingIgnoreCase("faith"));
         System.out.println("findBySpecificEmail"+userRepository.findBySpecificEmail("josie_story@email.com"));
         System.out.println("selectAllUser"+userRepository.selectAllUser());
         System.out.println("selectAllUserAgain"+userRepository.selectAllUserAgain());
-        System.out.println("selectAllUserContaining"+userRepository.selectAllUserContaining("faith"));
-        System.out.println("selectByEmail"+userRepository.selectByEmail("josie_story@email.com"));
+        System.out.println("selectAllUserContaining"+userRepository.retrieveAllByName("faith"));
+        System.out.println("selectByEmail"+userRepository.retrieveByEmail("josie_story@email.com"));
 
     }
 }
