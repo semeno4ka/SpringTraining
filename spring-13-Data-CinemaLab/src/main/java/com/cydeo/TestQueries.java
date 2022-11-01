@@ -74,7 +74,6 @@ public class TestQueries implements CommandLineRunner {
         System.out.println("findNames"+movieRepository.findNames());
         System.out.println("findMovieBySelectedName"+movieRepository.findMovieBySelectedName("Tenet"));
         System.out.println("findMovieByPriceRange"+movieRepository.findMovieByPriceRange(new BigDecimal(10),new BigDecimal(20)));
-        System.out.println("findMovieByDurationRange"+movieRepository.findMovieByDurationRange(100,120));
         System.out.println("-------------------USER--------------------");
         System.out.println("findByEmail"+userRepository.findByEmail("josie_story@email.com"));
         System.out.println("findByUsername"+userRepository.findByUsername("josieStory"));
