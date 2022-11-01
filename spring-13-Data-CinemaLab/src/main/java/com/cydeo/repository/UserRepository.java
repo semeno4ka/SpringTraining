@@ -53,7 +53,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> selectAllUserAgain();
 
     //Write a native query that returns all users in the range of ages?
-
+    @Query(value = "",nativeQuery = true)
 
     //Write a native query to read a user by email?
     @Query(value= "Select*From user_account where email Like ?1 ", nativeQuery = true)
