@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CarController {
-@RequestMapping("/info")// end point, browser link end
+@RequestMapping("/info")  //info?make=Honda
 public String carInfo(@RequestParam String make, Model model){
-
-    model.addAttribute("make",make);
-
+    model.addAttribute("make",make);//(make is key, should match)end point, browser link end
     return "/car/car-info";
 }
 
@@ -33,10 +31,10 @@ public String carInfo(@RequestParam String make, Model model){
         model.addAttribute("year", year);
         return "/car/car-info";
     }
-    @RequestMapping("/info/{make}/{age}")// localhost:2020/info/honda(kia,nissan whatever)
-    public String getCarInfo(@PathVariable String make, @PathVariable int age){  //{ make }- represents dynamic data
+    @RequestMapping("/info/{make}/{age}")
+    public String getCarInfo(@PathVariable String make, @PathVariable int age){
         System.out.println(make);
         System.out.println(age);
     return "/car/car-info";
     }
-}
+}// localhost:2020/info/honda(kia,nissan whatever)  //{ make }- represents dynamic data
