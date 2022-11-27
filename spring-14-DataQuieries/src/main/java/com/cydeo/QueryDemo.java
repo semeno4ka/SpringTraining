@@ -37,11 +37,11 @@ public class QueryDemo implements CommandLineRunner {
         System.out.println("---------------------EMPLOYEE-----------------------------");
         System.out.println("findByEmailContaining"+employeeRepository.findByEmail("mike@gmail"));
         //QUERY
-        System.out.println(" retrieveEmployeeDetail"+employeeRepository.retrieveEmployeeDetail());
-        System.out.println("retrieveEmployeeSalary"+employeeRepository.retrieveEmployeeSalary());
-
-
-
+//        System.out.println(" retrieveEmployeeDetail"+employeeRepository.retrieveEmployeeDetail());
+//        System.out.println("retrieveEmployeeSalary"+employeeRepository.retrieveEmployeeSalary());
+//
+//
+//
 
     }
 }

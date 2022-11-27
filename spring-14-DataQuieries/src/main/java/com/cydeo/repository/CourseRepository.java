@@ -7,22 +7,21 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public interface CourseRepository extends JpaRepository<Course, Long> {
 
     List<Course> findByCategory(String category);
 
     List<Course> findByCategoryOrderByName(String category);
-
-    boolean findByNameExists(String name);
     boolean existsByName(String name);
 
     int countByCategory(String category);
 
+
     List<Course> findByNameStartingWith(String str);
-    List<Course> streamAllByCategory(String category);
+    Stream<Course> streamAllByCategory(String category);
 
-
-    @Query("SELECT c FROM Course c WHERE c.category=:catgory AND c.rating> :rating")
-    List<Course> retrieveALlByCategoryANdRatingGreaterThan(@Param("rating") int rating, @Param("category") String category);
+    @Query("SELECT c FROM Course c WHERE c.category=:category AND c.rating> :rating")
+    List<Course> retrieveALlByCategoryAndRatingGreaterThan(@Param("rating") int rating, @Param("category") String category);
 }
