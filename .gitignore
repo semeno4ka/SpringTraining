@@ -3,3 +3,7 @@
 *.iml
 /spring-10-Thymeleaf/.gitignore
 /spring-11-DataCreation/.gitignore
+/spring-17-REST-ConsumeAPIs/.mvn/
+/spring-17-REST-ConsumeAPIs/HELP.md
+/spring-17-REST-ConsumeAPIs/mvnw
+/spring-17-REST-ConsumeAPIs/mvnw.cmd

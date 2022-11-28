@@ -43,4 +43,14 @@ public class CourseController_ResponseEntity {
                 .header("Operation", "Create")
                 .body(courseService.createCourse(course));
     }
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteCourseById(@PathVariable("id") Long id){
+        courseService.deleteCourseById(id);
+        return ResponseEntity.noContent().build();
+    }
+    @PutMapping("{id}")
+    public ResponseEntity<Void> updateCourse(@PathVariable("id") Long id, @RequestBody CourseDTO course){
+        courseService.updateCourse(id,course);
+        return ResponseEntity.noContent().build();
+    }
 }

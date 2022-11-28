@@ -19,7 +19,6 @@ public class CourseController {
     @GetMapping
     //@ResponseBody Let Spring know we are not working with a view in this method
     public List<CourseDTO> getAllCourses(){// Not String html file anymore, but the data
-
         return courseService.getCourses();
     }
     @GetMapping("{id}")
@@ -34,7 +33,7 @@ public class CourseController {
 
     @PostMapping
     public CourseDTO createCourse(@RequestBody CourseDTO course){
-         return courseService.createCourse(course);
+        return courseService.createCourse(course);
     }
 
     @PutMapping("{id}")      // findById                 Object to be updated
