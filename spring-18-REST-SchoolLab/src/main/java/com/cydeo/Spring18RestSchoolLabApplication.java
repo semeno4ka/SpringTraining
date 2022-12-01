@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-@EnableFeignClients
+@EnableFeignClients//creates beans itself
 public class Spring18RestSchoolLabApplication {
 
 	public static void main(String[] args) {

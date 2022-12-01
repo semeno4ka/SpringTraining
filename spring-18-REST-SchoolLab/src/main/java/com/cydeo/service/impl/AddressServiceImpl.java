@@ -21,7 +21,7 @@ public class AddressServiceImpl implements AddressService {
     private final MapperUtil mapperUtil;
     private final WeatherApiClient weatherApiClient;
 
-    @Value("${access_key}")
+    @Value("${access_key}")// name from properties file
     private String access_key;
 
     public AddressServiceImpl(AddressRepository addressRepository, MapperUtil mapperUtil, WeatherApiClient weatherApiClient) {
@@ -85,7 +85,7 @@ public class AddressServiceImpl implements AddressService {
 
     }
 
-    private WeatherDTO getCurrentWeather(String city) {
+    private WeatherDTO getCurrentWeather(String city) {// such variables as access key better to keep in properties file
         return weatherApiClient.getCurrentWeather(access_key, city);
     }
 
