@@ -37,7 +37,7 @@ public class SchoolController {
     @GetMapping("/students")
     public ResponseEntity<ResponseWrapper> readAllStudents() {
         return ResponseEntity.ok(new ResponseWrapper("Students are successfully retrieved", studentService.findAll()));
-    }
+    }// with OK we can pass the data directly as parameter
 
     @GetMapping("/parents")
     public ResponseEntity<ResponseWrapper> readAllParents() {
@@ -45,17 +45,17 @@ public class SchoolController {
                 new ResponseWrapper(true, "Parents are retrieved successfully",
                         HttpStatus.OK.value(), parentService.findAll());
         return ResponseEntity.status(HttpStatus.OK).body(responseWrapper);
-    }
+    }// with status we need to continue with BODY in order to pass the data
 
-    @GetMapping("/address/{id}")
+    @GetMapping("/address/{id}")//we throw an exception because our findById throws exception for No Address
     public ResponseEntity<ResponseWrapper> getAddress(@PathVariable("id") Long id) throws Exception {
         AddressDTO addressDTO = addressService.findById(id);
         return ResponseEntity.ok(new ResponseWrapper("Address is successfully retrieved", addressDTO));
     }
 
-    @PutMapping("/address/{id}")
+    @PutMapping("/address/{id}")//RequestBody for catching the changed address in Request Body
     public AddressDTO updateAddress(@PathVariable("id") Long id, @RequestBody AddressDTO addressDTO) throws Exception {
-        addressDTO.setId(id);
+        addressDTO.setId(id);// since our ID is Ignored in Jason, we need to catch it from url
         return addressService.update(addressDTO);
     }
 
