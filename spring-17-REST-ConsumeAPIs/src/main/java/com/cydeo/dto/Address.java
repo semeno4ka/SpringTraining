@@ -1,22 +1,15 @@
 
 package com.cydeo.dto;
 
+import com.fasterxml.jackson.annotation.*;
+
+
+import javax.annotation.processing.Generated;
 import java.util.HashMap;
 import java.util.Map;
 
-
-
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
-import javax.annotation.processing.Generated;
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({// the field order specified
+@JsonPropertyOrder({
     "street",
     "suite",
     "city",
@@ -26,7 +19,7 @@ import javax.annotation.processing.Generated;
 @Generated("jsonschema2pojo")
 public class Address {
 
-    @JsonProperty("street")//specify how it will look like in Jason
+    @JsonProperty("street")
     private String street;
     @JsonProperty("suite")
     private String suite;
@@ -36,7 +29,7 @@ public class Address {
     private String zipcode;
     @JsonProperty("geo")
     private Geo geo;
-    @JsonIgnore//Ignore the field in the output
+    @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("street")
