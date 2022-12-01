@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL)// not to see null fields in json response
 public class ParentDTO {
 
     @JsonIgnore
@@ -28,14 +28,14 @@ public class ParentDTO {
     private String email;
     private String username;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)// write, not retrieve
     private String password;
 
     private LocalDate birthday;
 
     private Status status;
 
-    @JsonManagedReference(value = "parent-address-reference")
+    @JsonManagedReference(value = "parent-address-reference")// assign unique name
     private AddressDTO address;
 
 }

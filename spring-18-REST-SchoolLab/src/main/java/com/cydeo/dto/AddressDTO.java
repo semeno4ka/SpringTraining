@@ -15,7 +15,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL)// not to see null fields in json response
 public class AddressDTO {
 
     @JsonIgnore
@@ -26,18 +26,18 @@ public class AddressDTO {
     private String state;
     private String city;
     private String postalCode;
-
+//No need to annotate enum to get string response
     private AddressType addressType;
 
-    @JsonBackReference(value = "student-address-reference")          // defaultReference
+    @JsonBackReference(value = "student-address-reference") // defaultReference based on name which should be unique
     private StudentDTO student;
 
-    @JsonBackReference(value = "parent-address-reference")          // defaultReference
+    @JsonBackReference(value = "parent-address-reference") // defaultReference, names should be created unique
     private ParentDTO parent;
 
-    @JsonBackReference(value = "teacher-address-reference")          // defaultReference
+    @JsonBackReference(value = "teacher-address-reference")// defaultReference,names should be created unique
     private TeacherDTO teacher;
 
-    private Integer currentTemperature;     // Weather information, which we will later get it from 3rd party API
-
+    private Integer currentTemperature;// Weather information, which we will later get it from 3rd party API
+//we do not put Weather info to our db, we should keep it null till we start consuming API
 }

@@ -10,21 +10,22 @@ import org.springframework.http.HttpStatus;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResponseWrapper {
+public class ResponseWrapper {//customization of operations message in THE BODY
 
     private boolean success;
     private String message;
     private Integer code;
-    private Object data;
+    private Object data;// used to wrap up DTO classes, lists of DTO we will pass
 
-    public ResponseWrapper(String message, Object data) {
+    //Custom constructors for better customization
+    public ResponseWrapper(String message, Object data) {// return data
         this.success = true;
         this.message = message;
         this.code = HttpStatus.OK.value();
         this.data = data;
     }
 
-    public ResponseWrapper(String message) {
+    public ResponseWrapper(String message) {// return message only
         this.success = true;
         this.message = message;
         this.code = HttpStatus.OK.value();

@@ -20,8 +20,8 @@ public class Spring17RestConsumeApIsApplication {
     public RestTemplate restTemplate(){
         return new RestTemplate();
     }
-//    @Bean
-//    public ModelMapper mapper() {
-//        return new ModelMapper();
-//    }
+    @Bean
+    public ModelMapper mapper() {
+        return new ModelMapper();
+    }
 }

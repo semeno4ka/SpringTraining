@@ -14,10 +14,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL)// not to see null fields in json response
 public class ClassDTO {
 
-    @JsonIgnore
+    @JsonIgnore// you should keep ID info from user and not allow inputs
     private Long id;
 
     private String name;

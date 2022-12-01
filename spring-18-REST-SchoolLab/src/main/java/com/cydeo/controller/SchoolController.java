@@ -28,7 +28,7 @@ public class SchoolController {
         this.addressService = addressService;
     }
 
-    @GetMapping("/teachers")
+    @GetMapping("/teachers")//Rememeber that we work with DTO only
     public List<TeacherDTO> readAllTeacher() {
         List<TeacherDTO> teachers = teacherService.findAll();
         return teachers;
