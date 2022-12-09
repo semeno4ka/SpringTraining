@@ -27,9 +27,7 @@ public class Consume_WebClient {
 
     @GetMapping("/flux-movie-cinemas")
     public Flux<MovieCinemaDTO> readAllCinemaFlux(){
-
         return Flux.fromIterable(movieCinemaService.findAll());
-
     }
 
 //    @GetMapping("/mono-movie-cinema/{id}")
@@ -41,9 +39,7 @@ public class Consume_WebClient {
 
     @GetMapping("/mono-movie-cinema/{id}")
     public ResponseEntity<Mono<MovieCinemaDTO>> readById(@PathVariable("id") Long id){
-
         return ResponseEntity.ok(Mono.just(movieCinemaService.findById(id)));
-
     }
 
     @PostMapping("/create-genre")
@@ -68,14 +64,12 @@ public class Consume_WebClient {
 
     @GetMapping("/flux")
     public Flux<MovieCinemaDTO> readWithWebClient(){
-
         return webClient
                 .get()
                 .uri("/flux-movie-cinemas")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .retrieve()
                 .bodyToFlux(MovieCinemaDTO.class);
-
     }
 
     @GetMapping("/mono/{id}")

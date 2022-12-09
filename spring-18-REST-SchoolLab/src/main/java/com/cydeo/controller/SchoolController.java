@@ -55,7 +55,7 @@ public class SchoolController {
 
     @PutMapping("/address/{id}")//RequestBody for catching the changed address in Request Body
     public AddressDTO updateAddress(@PathVariable("id") Long id, @RequestBody AddressDTO addressDTO) throws Exception {
-        addressDTO.setId(id);// since our ID is Ignored in Jason, we need to catch it from url
+        addressDTO.setId(id);// since our ID is Ignored in Jason, we need to catch it from urls
         return addressService.update(addressDTO);
     }
 

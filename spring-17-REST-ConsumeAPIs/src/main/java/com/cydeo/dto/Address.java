@@ -18,7 +18,6 @@ import java.util.Map;
 })
 @Generated("jsonschema2pojo")
 public class Address {
-
     @JsonProperty("street")
     private String street;
     @JsonProperty("suite")

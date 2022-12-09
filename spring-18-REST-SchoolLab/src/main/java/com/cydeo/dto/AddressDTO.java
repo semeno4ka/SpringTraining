@@ -31,10 +31,8 @@ public class AddressDTO {
 
     @JsonBackReference(value = "student-address-reference") // defaultReference based on name which should be unique
     private StudentDTO student;
-
     @JsonBackReference(value = "parent-address-reference") // defaultReference, names should be created unique
     private ParentDTO parent;
-
     @JsonBackReference(value = "teacher-address-reference")// defaultReference,names should be created unique
     private TeacherDTO teacher;
 
