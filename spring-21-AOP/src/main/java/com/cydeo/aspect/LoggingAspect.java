@@ -18,7 +18,7 @@ public class LoggingAspect {
     //is used to put info into Console(just like System.out.print)
 
 
-    //Step 1.creates jointpoint, to define methods with logging
+    //Step 1.creates joinpoint, to define methods with logging
     // Log info before any method in courseController
 //    @Pointcut("execution(* com.cydeo.controller.CourseController.*(..))")
 //    public void myPointcut(){
@@ -34,7 +34,7 @@ public class LoggingAspect {
 //        logger.info("This log is printed in console before any CourseController method run");
 //    }
 
-   //When you want one specific method to be your jointpoint
+   //When you want one specific method to be your joinpoint
 //    @Pointcut("execution(* com.cydeo.repository.CourseRepository.findById(*))")
 //    public void courseRepositoryFindByIdPC(){}
 //   // What need to happen before the method (findById from Repo) gets executed
