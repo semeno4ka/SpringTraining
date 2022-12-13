@@ -74,7 +74,6 @@ public class Consume_WebClient {
 
     @GetMapping("/mono/{id}")
     public Mono<MovieCinemaDTO> readMonoWithWebClient(@PathVariable("id") Long id){
-
         return webClient
                 .get()
                 .uri("/mono-movie-cinema/{id}",id)

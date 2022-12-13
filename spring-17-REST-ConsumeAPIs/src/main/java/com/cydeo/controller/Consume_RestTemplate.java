@@ -27,7 +27,8 @@ public class Consume_RestTemplate {
     }
 
     @GetMapping("{id}")
-    public Object readUSer(@PathVariable("id") Integer id){// No need for DTO in getForObject, take whatever is there already
+    public Object readUSer(@PathVariable("id") Integer id){
+        // No need for DTO in getForObject, take whatever is there already
         String URL = URI+"/{id}";//need to show certain user
         return restTemplate.getForObject(URL, Object.class,id);
     }

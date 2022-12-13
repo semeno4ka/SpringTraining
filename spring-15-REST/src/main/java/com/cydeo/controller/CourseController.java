@@ -17,7 +17,7 @@ public class CourseController {
     }
 
     @GetMapping
-    //@ResponseBody Let Spring know we are not working with a view in this method
+    @ResponseBody //Let Spring know we are not working with a view in this method
     public List<CourseDTO> getAllCourses(){// Not String html file anymore, but the data
         return courseService.getCourses();
     }
@@ -25,12 +25,10 @@ public class CourseController {
     public CourseDTO getCourseById(@PathVariable("id") Long id){
         return courseService.getCourseById(id);
     }
-
     @GetMapping("category/{name}")
     public List<CourseDTO> getCoursesByCategory(@PathVariable("name") String categoryName){
         return courseService.getCoursesByCategory(categoryName);
     }
-
     @PostMapping
     public CourseDTO createCourse(@RequestBody CourseDTO course){
         return courseService.createCourse(course);
@@ -44,5 +42,4 @@ public class CourseController {
     public void deleteCourseById(@PathVariable("id") Long id){
         courseService.deleteCourseById(id);
     }
-
 }

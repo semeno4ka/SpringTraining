@@ -40,7 +40,8 @@ public class UserController {
     @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
     produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
     @Operation(summary = "Create a user")
-    @ApiResponse(responseCode = "201",description = "User created successfully(CREATED)", content = {@Content(mediaType = "application/json"),
+    @ApiResponse(responseCode = "201",description = "User created successfully(CREATED)",
+            content = {@Content(mediaType = "application/json"),
     @Content(mediaType = "application/xml")},
     headers = {@Header(name = "Connection", description = "keep-alive")})
     public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
