@@ -1,5 +1,6 @@
 package com.cydeo.controller;
 
+import com.cydeo.annotation.LoggingAnnotation;
 import com.cydeo.dto.CourseDTO;
 import com.cydeo.service.CourseService;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ public class CourseController {
         return list;
     }
 
+    @LoggingAnnotation
     @GetMapping("/{id}")
     public CourseDTO getCourseById(@PathVariable("id") Long courseId) {
         return courseService.getCourseById(courseId);
@@ -31,7 +33,7 @@ public class CourseController {
     public List<CourseDTO> getCourseByCategory(@PathVariable("name") String category) {
         return courseService.getCoursesByCategory(category);
     }
-
+    @LoggingAnnotation
     @PostMapping
     public CourseDTO createCourse(@RequestBody CourseDTO course) {
         return courseService.createCourse(course);
