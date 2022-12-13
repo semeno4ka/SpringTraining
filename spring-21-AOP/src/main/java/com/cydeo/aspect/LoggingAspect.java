@@ -2,6 +2,7 @@ package com.cydeo.aspect;
 
 import com.cydeo.dto.CourseDTO;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;//l4j => logging facade for java
@@ -97,5 +98,26 @@ public class LoggingAspect {
 //               exception.getMessage());// will not be shown until exception is thrown
 //     }
 
+    @Pointcut("@annotation(com.cydeo.annotation.LoggingAnnotation)")
+    public void loggingAnnotationPC(){}
 
+    @Around("loggingAnnotationPC()")//same as joinPoint but with proceed method
+    public Object anyLoggingAnnotationOperation(ProceedingJoinPoint proceedingJoinPoint){// can return or stay void
+    logger.info("Before -> Method: {} - Parameter: {}",
+           proceedingJoinPoint.getSignature().toShortString(),
+           proceedingJoinPoint.getArgs());
+    Object result = null;
+//what happens before real method
+    try{
+        result=proceedingJoinPoint.proceed();// will run my method annotated with @LoggingAnnotation
+        //without proceed the method will never get executed
+    }catch(Throwable throwable){
+    throwable.printStackTrace();
+    }
+//what happens after method because of 'proceed'()
+    logger.info("After -> Method: {} - Result: {}",
+            proceedingJoinPoint.getSignature().toShortString(),
+            result.toString());
+    return result;
+    }
 }
