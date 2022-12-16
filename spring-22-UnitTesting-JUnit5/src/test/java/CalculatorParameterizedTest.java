@@ -34,4 +34,21 @@ public class CalculatorParameterizedTest {
   static String[] stringProvider(){
     return new String[]{"Java","JS","TS"};// will run test for each of element
   }
+  @ParameterizedTest
+  @CsvSource({
+          "10,20,30",
+          "20,20,40",
+          "30,20,100"//num, num, result
+  })
+  void testCase5(int num1, int num2, int result){
+  Assertions.assertEquals(result, Calculator.add(num1,num2));
+  }
+
+  @ParameterizedTest                             // skip first line in csv, because it causes a problem
+  @CsvFileSource(resources = "/sample-data.csv", numLinesToSkip = 1)//by default looks in resource folder,can use full path
+  void testCase6(int num1, int num2, int result){
+    Assertions.assertEquals(result, Calculator.add(num1,num2));
+  }
+
+
 }
