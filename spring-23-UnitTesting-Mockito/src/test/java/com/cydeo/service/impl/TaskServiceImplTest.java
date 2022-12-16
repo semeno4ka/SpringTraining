@@ -11,11 +11,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import java.util.Optional;
+import static org.mockito.BDDMockito.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class TaskServiceImplTest {
@@ -30,19 +28,32 @@ class TaskServiceImplTest {
     @ParameterizedTest
     @ValueSource(longs = {1L,2L,3L})
     void findById_Test(long id){
-
+        //Given
         Task task =new Task();
         when(taskRepository.findById(id)).thenReturn(Optional.of(task));//since findById returns Optional<Task>
         when(taskMapper.convertToDto(task)).thenReturn(new TaskDTO());//can put any(Task.class)in convertToDTO, but particular tasks checks the same task we have created at line 34
 
-        taskService.findById(id);
-        verify(taskRepository).findById(id);
-        verify(taskMapper).convertToDto(task);
 
-
-
+        //WHEN real action happens
+        //TaskDTO taskDTO=taskService.findBYId(id);
+        taskService.findById(id);//line that mocks real test, it's performance, not result
+        //Then (Assert and verify checking methods)
+        verify(taskRepository).findById(id);//check injected mocks
+        verify(taskMapper).convertToDto(task);//in real order simulating real results
+        //assertNotNull(taskDTO); if you do not need to assert the result, no need to assign taskService.findBYId to TaskDTO taskDTO
     }
 
+    @Test
+    void findById_BDD_Test(){
+        Task task =new Task();
+        given(taskRepository.findById(anyLong())).willReturn(Optional.of(task));
+        given(taskMapper.convertToDto(task)).willReturn(new TaskDTO());
+
+        taskService.findById(anyLong());
+
+        then(taskRepository).should().findById(anyLong());
+        then(taskMapper).should(atLeastOnce()).convertToDto(task);
+    }
 
 
 }
