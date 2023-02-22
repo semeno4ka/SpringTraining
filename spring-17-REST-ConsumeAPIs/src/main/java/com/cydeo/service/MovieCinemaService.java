@@ -7,6 +7,7 @@ import java.util.List;
 public interface MovieCinemaService {
 
     List<MovieCinemaDTO> findAll();
+
     MovieCinemaDTO findById(Long id);
 
 }

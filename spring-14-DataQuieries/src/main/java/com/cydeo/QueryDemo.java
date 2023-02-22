@@ -23,19 +23,19 @@ public class QueryDemo implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("-----------------------------REGIONS-----------------------------");
-        System.out.println("findByCountry"+ regionRepository.findByCountry("Canada"));
-        System.out.println("findByCountryContaining"+regionRepository.findByCountryContaining("United"));
-        System.out.println("findByCountryContainingOrderByRegion"+regionRepository.findByCountryContainingOrderByRegion("United"));
-        System.out.println("findTopByCountry"+regionRepository.findTopByCountry("United States"));
-        System.out.println("findTop2ByCountry"+regionRepository.findTop2ByCountry("United States"));
-        System.out.println("findByCountryContainingOrderByRegion"+regionRepository.findByCountryContainingOrderByRegion("United States"));
+        System.out.println("findByCountry" + regionRepository.findByCountry("Canada"));
+        System.out.println("findByCountryContaining" + regionRepository.findByCountryContaining("United"));
+        System.out.println("findByCountryContainingOrderByRegion" + regionRepository.findByCountryContainingOrderByRegion("United"));
+        System.out.println("findTopByCountry" + regionRepository.findTopByCountry("United States"));
+        System.out.println("findTop2ByCountry" + regionRepository.findTop2ByCountry("United States"));
+        System.out.println("findByCountryContainingOrderByRegion" + regionRepository.findByCountryContainingOrderByRegion("United States"));
         System.out.println("-----------------------------DEPARTMENTS-----------------------------");
-        System.out.println("findByDepartment"+departmentRepository.findByDepartment("Furniture"));
-        System.out.println("findByDivision"+departmentRepository.findByDivision("Health"));
-        System.out.println("findByDivisionEndingWith"+departmentRepository.findByDivisionEndingWith("ics"));
-        System.out.println("findDistinctTop3ByDivisionContains"+departmentRepository.findDistinctTop3ByDivisionContains("Hea"));
+        System.out.println("findByDepartment" + departmentRepository.findByDepartment("Furniture"));
+        System.out.println("findByDivision" + departmentRepository.findByDivision("Health"));
+        System.out.println("findByDivisionEndingWith" + departmentRepository.findByDivisionEndingWith("ics"));
+        System.out.println("findDistinctTop3ByDivisionContains" + departmentRepository.findDistinctTop3ByDivisionContains("Hea"));
         System.out.println("---------------------EMPLOYEE-----------------------------");
-        System.out.println("findByEmailContaining"+employeeRepository.findByEmail("mike@gmail"));
+        System.out.println("findByEmailContaining" + employeeRepository.findByEmail("mike@gmail"));
         //QUERY
 //        System.out.println(" retrieveEmployeeDetail"+employeeRepository.retrieveEmployeeDetail());
 //        System.out.println("retrieveEmployeeSalary"+employeeRepository.retrieveEmployeeSalary());

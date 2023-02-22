@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name="items")
+@Table(name = "items")
 
 public class Item {
 
@@ -18,7 +18,7 @@ public class Item {
     private Long id;
     private String name;
     private String code;
-    @ManyToMany(mappedBy ="itemList")
+    @ManyToMany(mappedBy = "itemList")
     private List<Cart> carts;
 
     public Item(String name, String code) {

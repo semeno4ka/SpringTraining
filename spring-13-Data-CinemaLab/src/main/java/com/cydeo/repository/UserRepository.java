@@ -29,7 +29,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByAccountAgeGreaterThan(Integer age);
 
 
-
     // ------------------- JPQL QUERIES ------------------- //
 
     //Write a JPQL query that returns a user read by email?
@@ -52,7 +51,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> retrieveAllByName(@Param("name") String name);
 
     //Write a native query that returns all users?
-    @Query(value= "Select*From user_account ", nativeQuery = true)
+    @Query(value = "Select*From user_account ", nativeQuery = true)
     List<User> selectAllUserAgain();
 
     //Write a native query that returns all users in the range of ages?

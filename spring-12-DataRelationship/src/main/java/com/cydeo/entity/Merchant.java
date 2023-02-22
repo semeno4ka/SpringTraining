@@ -22,7 +22,8 @@ public class Merchant {
     private BigDecimal transactionFee;
     private BigDecimal commissionRate;
     private Integer payoutDelayCount;// hoe many days till payout
-    @OneToMany(mappedBy ="merchant") //One merchant, many payments. If you do not use mappedBy it will create separate table
+    @OneToMany(mappedBy = "merchant")
+    //One merchant, many payments. If you do not use mappedBy it will create separate table
     //In one to Many relation, ownership belongs to many
     //if you need bidirectional, you should specify OnetoOne, if one directional,than just keep ManyTOOne in payment class
     //bidirectional_ access from one to another, unidirectional, access only from one class

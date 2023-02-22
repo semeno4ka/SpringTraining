@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("/api/v1/accounts")
 @Tag(name = "Account", description = "Account CRUD Operations")
 @Tags(value = {@Tag(name = "Account", description = "Account CRUD Operations"),
-               @Tag(name = "Account2", description = "Account2 CRUD Operations")})
+        @Tag(name = "Account2", description = "Account2 CRUD Operations")})
 public class AccountController {
 
     private final AccountService accountService;
@@ -28,7 +28,8 @@ public class AccountController {
 
     @GetMapping("/list")
     @Operation(summary = "Read all accounts")
-    public ResponseEntity<List<AccountDTO>> getAllAccounts() {return ResponseEntity.ok(accountService.getAccounts());
+    public ResponseEntity<List<AccountDTO>> getAllAccounts() {
+        return ResponseEntity.ok(accountService.getAccounts());
     }
 
     @GetMapping

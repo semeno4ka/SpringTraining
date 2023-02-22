@@ -18,21 +18,18 @@ public class MentorController {
 
     @GetMapping("/register")//localhost:8080/register
     public String register(Model model) {
-        List<String> batchList= Arrays.asList("JD1","JD2","JD3");
-        model.addAttribute("batchList",batchList);
+        List<String> batchList = Arrays.asList("JD1", "JD2", "JD3");
+        model.addAttribute("batchList", batchList);
         model.addAttribute("mentor", new Mentor());
         return "mentor/mentor-register";
     }
 
-@PostMapping("/confirm")
-    public String submitForm(@ModelAttribute("mentor") Mentor mentor){
+    @PostMapping("/confirm")
+    public String submitForm(@ModelAttribute("mentor") Mentor mentor) {
 //how to access "mentor" attribute in this method
-    // after you submit, you will see new empty object
+        // after you submit, you will see new empty object
         return "redirect:/mentor/register";// go to previous END point
-}
-
-
-
+    }
 
 
 }

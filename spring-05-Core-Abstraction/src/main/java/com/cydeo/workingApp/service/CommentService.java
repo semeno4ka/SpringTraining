@@ -5,6 +5,7 @@ import com.cydeo.workingApp.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import com.cydeo.workingApp.model.Comment;
+
 @Component
 public class CommentService {
 
@@ -16,9 +17,9 @@ public class CommentService {
         this.commentNotificationProxy = commentNotificationProxy;
     }
 
-    public void publishComment(Comment comment){
-       commentRepository.storeComment(comment);
-       commentNotificationProxy.sendComment(comment);
+    public void publishComment(Comment comment) {
+        commentRepository.storeComment(comment);
+        commentNotificationProxy.sendComment(comment);
         //save in the DB + send email
     }
 }

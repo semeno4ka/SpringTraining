@@ -35,7 +35,7 @@ public class LoggingAspect {
 //        logger.info("This log is printed in console before any CourseController method run");
 //    }
 
-   //When you want one specific method to be your joinpoint
+    //When you want one specific method to be your joinpoint
 //    @Pointcut("execution(* com.cydeo.repository.CourseRepository.findById(*))")
 //    public void courseRepositoryFindByIdPC(){}
 //   // What need to happen before the method (findById from Repo) gets executed
@@ -100,25 +100,26 @@ public class LoggingAspect {
 //     }
 
     @Pointcut("@annotation(com.cydeo.annotation.LoggingAnnotation)")
-    public void loggingAnnotationPC(){}
+    public void loggingAnnotationPC() {
+    }
 
     @Around("loggingAnnotationPC()")//same as joinPoint but with proceed method
-    public Object anyLoggingAnnotationOperation(ProceedingJoinPoint proceedingJoinPoint){// can return or stay void
-    logger.info("Before -> Method: {} - Parameter: {}",
-           proceedingJoinPoint.getSignature().toShortString(),
-           proceedingJoinPoint.getArgs());
-    Object result = null;
+    public Object anyLoggingAnnotationOperation(ProceedingJoinPoint proceedingJoinPoint) {// can return or stay void
+        logger.info("Before -> Method: {} - Parameter: {}",
+                proceedingJoinPoint.getSignature().toShortString(),
+                proceedingJoinPoint.getArgs());
+        Object result = null;
 //what happens before real method
-    try{
-        result=proceedingJoinPoint.proceed();// will run my method annotated with @LoggingAnnotation
-        //without proceed the method will never get executed
-    }catch(Throwable throwable){
-    throwable.printStackTrace();
-    }
+        try {
+            result = proceedingJoinPoint.proceed();// will run my method annotated with @LoggingAnnotation
+            //without proceed the method will never get executed
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
 //what happens after method because of 'proceed'()
-    logger.info("After -> Method: {} - Result: {}",
-            proceedingJoinPoint.getSignature().toShortString(),
-            result.toString());
-    return result;
+        logger.info("After -> Method: {} - Result: {}",
+                proceedingJoinPoint.getSignature().toShortString(),
+                result.toString());
+        return result;
     }
 }

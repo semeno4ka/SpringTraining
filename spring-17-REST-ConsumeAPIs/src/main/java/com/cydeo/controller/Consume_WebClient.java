@@ -26,7 +26,7 @@ public class Consume_WebClient {
     }
 
     @GetMapping("/flux-movie-cinemas")
-    public Flux<MovieCinemaDTO> readAllCinemaFlux(){
+    public Flux<MovieCinemaDTO> readAllCinemaFlux() {
         return Flux.fromIterable(movieCinemaService.findAll());
     }
 
@@ -38,12 +38,12 @@ public class Consume_WebClient {
 //    }
 
     @GetMapping("/mono-movie-cinema/{id}")
-    public ResponseEntity<Mono<MovieCinemaDTO>> readById(@PathVariable("id") Long id){
+    public ResponseEntity<Mono<MovieCinemaDTO>> readById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(Mono.just(movieCinemaService.findById(id)));
     }
 
     @PostMapping("/create-genre")
-    public Mono<GenreDTO> createGenre(@RequestBody GenreDTO genre){
+    public Mono<GenreDTO> createGenre(@RequestBody GenreDTO genre) {
 
         GenreDTO createdGenre = genreService.save(genre);
 
@@ -53,7 +53,7 @@ public class Consume_WebClient {
     }
 
     @DeleteMapping("/delete/genre/{id}")
-    public Mono<Void> deleteGenre(@PathVariable("id") Long id){
+    public Mono<Void> deleteGenre(@PathVariable("id") Long id) {
 
         genreService.deleteById(id);
 
@@ -63,7 +63,7 @@ public class Consume_WebClient {
 //    ---------------------------WEBCLIENT---------------------------
 
     @GetMapping("/flux")
-    public Flux<MovieCinemaDTO> readWithWebClient(){
+    public Flux<MovieCinemaDTO> readWithWebClient() {
         return webClient
                 .get()
                 .uri("/flux-movie-cinemas")
@@ -73,10 +73,10 @@ public class Consume_WebClient {
     }
 
     @GetMapping("/mono/{id}")
-    public Mono<MovieCinemaDTO> readMonoWithWebClient(@PathVariable("id") Long id){
+    public Mono<MovieCinemaDTO> readMonoWithWebClient(@PathVariable("id") Long id) {
         return webClient
                 .get()
-                .uri("/mono-movie-cinema/{id}",id)
+                .uri("/mono-movie-cinema/{id}", id)
                 .retrieve()
                 .bodyToMono(MovieCinemaDTO.class);
 

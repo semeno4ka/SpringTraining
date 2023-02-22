@@ -25,18 +25,19 @@ public class CommentService {
         this.dbConfigData = dbConfigData;
     }
 
-    public void publishComment(Comment comment){
-       commentRepository.storeComment(comment);
-       commentNotificationProxy.sendComment(comment);
+    public void publishComment(Comment comment) {
+        commentRepository.storeComment(comment);
+        commentNotificationProxy.sendComment(comment);
         //save in the DB + send email
     }
-    public void printConfigData(){
+
+    public void printConfigData() {
         System.out.println(appConfigData.getUsername());
         System.out.println(appConfigData.getPassword());
         System.out.println(appConfigData.getUrl());
     }
 
-    public void printDbConfigData(){
+    public void printDbConfigData() {
         System.out.println(dbConfigData.getUsername());
         System.out.println(dbConfigData.getPassword());
         System.out.println(dbConfigData.getType());

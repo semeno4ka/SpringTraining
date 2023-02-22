@@ -17,13 +17,13 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(columnDefinition = "DATE" )
+    @Column(columnDefinition = "DATE")
     private LocalDate createdDate;//payment date
     private BigDecimal amount;
-    @Enumerated (EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     private Status paymentStatus;
     //@OneToOne(cascade = CascadeType.ALL)
-    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})//cascading doesn't make sence on Many to one
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})//cascading doesn't make sence on Many to one
     //The cascade persist is used to specify that if an entity is persisted then all its associated child entities will also be persisted.
     @JoinColumn(name = "payment_detail_id")
     private PaymentDetail paymentDetail;
