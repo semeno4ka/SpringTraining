@@ -16,7 +16,7 @@ public class CourseController {
         this.courseService = courseService;
     }
 
-    @GetMapping
+    @GetMapping//default endpoint from requestMapping
     @ResponseBody //Let Spring know we are not working with a view in this method
     public List<CourseDTO> getAllCourses(){// Not String html file anymore, but the data
         return courseService.getCourses();

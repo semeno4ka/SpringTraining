@@ -29,19 +29,21 @@ class TaskServiceImplTest {
     @ValueSource(longs = {1L,2L,3L})
     void findById_Test(long id){
         //Given
-        Task task =new Task();
-        when(taskRepository.findById(id)).thenReturn(Optional.of(task));//since findById returns Optional<Task>
-        when(taskMapper.convertToDto(task)).thenReturn(new TaskDTO());//can put any(Task.class)in convertToDTO, but particular tasks checks the same task we have created at line 34
-
-
+        Task task =new Task();            //since findById returns Optional<Task>
+        when(taskRepository.findById(id)).thenReturn(Optional.of(task));
+        when(taskMapper.convertToDto(task)).thenReturn(new TaskDTO());
+        //can put any(Task.class)in convertToDTO, but this test checks the same task we created
         //WHEN real action happens
-        //TaskDTO taskDTO=taskService.findBYId(id);
+        //TaskDTO taskDTO=taskService.findBYId(id); will be required if you need to assert particular result
         taskService.findById(id);//line that mocks real test, it's performance, not result
         //Then (Assert and verify checking methods)
         verify(taskRepository).findById(id);//check injected mocks
         verify(taskMapper).convertToDto(task);//in real order simulating real results
-        //assertNotNull(taskDTO); if you do not need to assert the result, no need to assign taskService.findBYId to TaskDTO taskDTO
+        //assertNotNull(taskDTO);
+        // if you do not need to assert the result, no need to assign taskService.findBYId to TaskDTO taskDTO
+
     }
+
 
     @Test
     void findById_BDD_Test(){

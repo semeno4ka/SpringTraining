@@ -30,21 +30,18 @@ class ProjectServiceImplTest {
 
     @Test
     void getByProjectCode_Test(){
-        //GIVEN
-        /*when  I run getByProjectCode I want to return some new project entity
-        STUBBING (define behaviour and result)*/
+        //Stubbing - define behaviour
+        //GIVEN when  I run getByProjectCode I want to return some new project entity
         when(projectRepository.findByProjectCode(anyString())).thenReturn(new Project());
-       /* when(projectMapper.convertToDto(new Project())).thenReturn(new ProjectDTO()); can do both ways*/
+        /*when(projectMapper.convertToDto(new Project())).thenReturn(new ProjectDTO());           can do both ways*/
         when(projectMapper.convertToDto(any(Project.class))).thenReturn(new ProjectDTO());
 
         //WHEN
         ProjectDTO projectDTO = projectService.getByProjectCode(anyString());
-
         //THEN
         InOrder inOrder = inOrder(projectRepository, projectMapper); //check order
         inOrder.verify(projectRepository).findByProjectCode(anyString());
         inOrder.verify(projectMapper).convertToDto(any(Project.class));
-
         assertNotNull(projectDTO);//confirm that the end result is not null
     }
 
@@ -52,7 +49,6 @@ class ProjectServiceImplTest {
     void getByProjectCode_ExceptionTest(){
         //GIVEN
         when(projectRepository.findByProjectCode("")).thenThrow(new NoSuchElementException("Project not found"));
-
         //WHEN                              expect this exception  when -> happens
         Throwable throwable = assertThrows(NoSuchElementException.class,()->projectService.getByProjectCode(""));
         //THEN

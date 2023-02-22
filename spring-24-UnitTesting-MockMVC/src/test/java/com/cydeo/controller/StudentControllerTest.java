@@ -22,7 +22,7 @@ public class StudentControllerTest {
 
     @Autowired
     private MockMvc mvc;
-    @MockBean//@Mock-> immitates real service object
+    @MockBean//@Mock-> imitates real service object
     StudentService studentService;
 
     @Test
@@ -62,7 +62,5 @@ public class StudentControllerTest {
                         "{\"firstName\": \"Tom\", \"lastName\":  \"Hanks\", \"age\": 50}]"))
                 .andDo(print())
                 .andReturn();
-
-
     }
 }

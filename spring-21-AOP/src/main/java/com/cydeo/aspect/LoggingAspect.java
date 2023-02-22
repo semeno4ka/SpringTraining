@@ -14,6 +14,7 @@ import java.util.List;
 @Component// both annotations required to work with Aspect
 public class LoggingAspect {
 
+
     Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
     //is used to put info into Console(just like System.out.print)
 

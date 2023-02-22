@@ -7,12 +7,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)//enable mockito
 class UserServiceImplTest {
-
+   //  UserServiceImpl mock= Mockito.mock(UserServiceImpl.class);
     @Mock
     UserRepository userRepository;
     @Mock
@@ -25,18 +26,20 @@ class UserServiceImplTest {
         //call real method inside main,which is the method I want to test
         userService.findByUserName("harold@manager.com");
 
-        //check if this method ran or not. It checks if Mock userRepo ran or not
+        //check if this method ran or not. It checks if Mock userRepo ran or not, whether
+        // they were any errors which prevented the method to run
         verify(userRepository).findByUserNameAndIsDeleted("harold@manager.com",false);
         verify(userRepository,times(1)).findByUserNameAndIsDeleted("harold@manager.com",false);
-        verify(userRepository,atLeastOnce()).findByUserNameAndIsDeleted("harold@manager.com",false);
         verify(userRepository,atLeast(1)).findByUserNameAndIsDeleted("harold@manager.com",false);
         verify(userRepository,atMostOnce()).findByUserNameAndIsDeleted("harold@manager.com",false);
+        verify(userRepository,atLeastOnce()).findByUserNameAndIsDeleted("harold@manager.com",false);
 
-        //interface from Mockito
+        //interface from Mockito that checks particular order of methods called
         InOrder inOrder = inOrder(userRepository,userMapper);//can accept any number of mocks
 
         //will check the order of execution  in the app: userRepo first, userMapper second
-        /*inOrder.verify(userMapper).convertToDto(null); should not be first, because it is run in our method as second*/
+        /*inOrder.verify(userMapper).convertToDto(null);
+        should not be first, because it is run in our method as second*/
         inOrder.verify(userRepository).findByUserNameAndIsDeleted("harold@manager.com",false);
         inOrder.verify(userMapper).convertToDto(null);
     }

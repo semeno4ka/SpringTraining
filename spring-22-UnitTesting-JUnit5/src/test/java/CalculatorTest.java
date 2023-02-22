@@ -7,12 +7,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class CalculatorTest {
 
     @BeforeAll
-    static void beforeAll(){System.out.println("Before all executed");}
+    static void beforeAll(){System.out.println("Before all executed");}//static because they are common for all methods
 
     @AfterAll
-    static void afterAll(){System.out.println("After all executed");}//static because they are common for all methods
-
-
+    static void afterAll(){System.out.println("After all executed");}
     @BeforeEach
     void setUpEach(){System.out.println("Before each executed");}
 

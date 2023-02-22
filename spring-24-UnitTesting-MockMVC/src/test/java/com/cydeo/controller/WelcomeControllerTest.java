@@ -25,7 +25,6 @@ public class WelcomeControllerTest {
         RequestBuilder request= MockMvcRequestBuilders.get("/welcome")//to build request, use RequestBuilder
                 .accept(MediaType.APPLICATION_JSON);
         MvcResult result = mvc.perform(request).andReturn();
-
         assertEquals(200, result.getResponse().getStatus());
         assertEquals("welcome",result.getResponse().getContentAsString());
     }
@@ -33,8 +32,8 @@ public class WelcomeControllerTest {
     @Test
     void welcomeTest2() throws Exception {
         RequestBuilder request= MockMvcRequestBuilders.get("/welcome")//to build request, use RequestBuilder
-                .accept(MediaType.APPLICATION_JSON);//does same thing we do in postman: input endpoint, choose request time, and mediatype
-
+                .accept(MediaType.APPLICATION_JSON);
+        //does same thing we do in postman: input endpoint, choose request time, and mediatype
         mvc.perform(request)// same as send button in postman
                 .andExpect(status().isOk())//verify status
                 .andExpect(content().string("welcome"))//what is the body
