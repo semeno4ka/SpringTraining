@@ -60,7 +60,7 @@ public class Consume_WebClient {
         return Mono.empty();
     }
 
-//    ---------------------------WEBCLIENT---------------------------
+//    ---------------------------WEBCLIENT CONSUMING OWN API---------------------------
 
     @GetMapping("/flux")
     public Flux<MovieCinemaDTO> readWithWebClient() {
