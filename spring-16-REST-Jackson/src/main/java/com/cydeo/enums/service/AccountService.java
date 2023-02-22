@@ -1,4 +1,4 @@
-package com.cydeo.service;
+package com.cydeo.enums.service;
 
 import com.cydeo.dto.AccountDTO;
 

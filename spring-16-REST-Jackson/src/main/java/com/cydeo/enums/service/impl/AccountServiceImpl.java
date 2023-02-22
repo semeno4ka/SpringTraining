@@ -1,8 +1,8 @@
-package com.cydeo.service.impl;
+package com.cydeo.enums.service.impl;
 
 import com.cydeo.dto.AccountDTO;
 import com.cydeo.repository.AccountRepository;
-import com.cydeo.service.AccountService;
+import com.cydeo.enums.service.AccountService;
 import com.cydeo.util.MapperUtil;
 import org.springframework.stereotype.Service;
 
