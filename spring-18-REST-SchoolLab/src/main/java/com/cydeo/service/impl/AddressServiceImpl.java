@@ -19,7 +19,7 @@ public class AddressServiceImpl implements AddressService {
     private final AddressRepository addressRepository;
     private final MapperUtil mapperUtil;
     private final WeatherApiClient weatherApiClient;
-    @Value("${access_key}")// name from properties file
+    @Value("${access_key}")// name from properties file ${access_key}
     private String access_key;
 
     public AddressServiceImpl(AddressRepository addressRepository, MapperUtil mapperUtil, WeatherApiClient weatherApiClient) {
