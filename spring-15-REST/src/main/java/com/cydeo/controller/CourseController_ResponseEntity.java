@@ -19,38 +19,40 @@ public class CourseController_ResponseEntity {
 
 
     @GetMapping
-    public ResponseEntity<List <CourseDTO>> getAllCourses(){//Modifications to output
+    public ResponseEntity<List<CourseDTO>> getAllCourses() {//Modifications to output
         return ResponseEntity
                 .status(HttpStatus.ACCEPTED) //custom status and headers
-                .header("Version","Cydeo V.2")
+                .header("Version", "Cydeo V.2")
                 .header("Operation", "Get List")
                 .body(courseService.getCourses());// whatever is the output, should be within body
     }
 
     @GetMapping("{id}")
-    public ResponseEntity <CourseDTO> getCourseById(@PathVariable("id") Long id){
+    public ResponseEntity<CourseDTO> getCourseById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(courseService.getCourseById(id)); // ok will go with default status and header structure
     }
 
     @GetMapping("category/{name}")
-    public ResponseEntity<List<CourseDTO>> getByCategory(@PathVariable("name") String name){
+    public ResponseEntity<List<CourseDTO>> getByCategory(@PathVariable("name") String name) {
         return ResponseEntity.ok(courseService.getCoursesByCategory(name));
     }
 
     @PostMapping
-    public ResponseEntity<CourseDTO> createCourse(@RequestBody CourseDTO course){
-        return ResponseEntity .status(HttpStatus.CREATED)
+    public ResponseEntity<CourseDTO> createCourse(@RequestBody CourseDTO course) {
+        return ResponseEntity.status(HttpStatus.CREATED)
                 .header("Operation", "Create")
                 .body(courseService.createCourse(course));
     }
+
     @DeleteMapping("{id}")
-    public ResponseEntity<Void> deleteCourseById(@PathVariable("id") Long id){
+    public ResponseEntity<Void> deleteCourseById(@PathVariable("id") Long id) {
         courseService.deleteCourseById(id);
         return ResponseEntity.noContent().build();
     }
+
     @PutMapping("{id}")
-    public ResponseEntity<Void> updateCourse(@PathVariable("id") Long id, @RequestBody CourseDTO course){
-        courseService.updateCourse(id,course);
+    public ResponseEntity<Void> updateCourse(@PathVariable("id") Long id, @RequestBody CourseDTO course) {
+        courseService.updateCourse(id, course);
         return ResponseEntity.noContent().build();
     }
 }

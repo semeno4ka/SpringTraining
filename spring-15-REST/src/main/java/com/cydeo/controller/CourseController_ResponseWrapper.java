@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.stream.Collectors;
-
 @RestController
 @RequestMapping("/courses/api/v3")
 public class CourseController_ResponseWrapper {
@@ -23,14 +21,14 @@ public class CourseController_ResponseWrapper {
 
 
     @GetMapping
-    public ResponseEntity<ResponseWrapper> getAllCourses(){
+    public ResponseEntity<ResponseWrapper> getAllCourses() {
         return ResponseEntity.status(HttpStatus.ACCEPTED)
-                .header("Version","Cydeo.V3")
+                .header("Version", "Cydeo.V3")
                 .body(new ResponseWrapper("List of Courses", courseService.getCourses()));
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<ResponseWrapper> getCourseById(@PathVariable("id") Long id){
-        return ResponseEntity.ok().body(new ResponseWrapper("Found by id"+id,courseService.getCourseById(id)));
+    public ResponseEntity<ResponseWrapper> getCourseById(@PathVariable("id") Long id) {
+        return ResponseEntity.ok().body(new ResponseWrapper("Found by id" + id, courseService.getCourseById(id)));
     }
 }

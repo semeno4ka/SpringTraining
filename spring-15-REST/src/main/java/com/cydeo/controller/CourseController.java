@@ -2,7 +2,6 @@ package com.cydeo.controller;
 
 import com.cydeo.dto.CourseDTO;
 import com.cydeo.service.CourseService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,28 +17,32 @@ public class CourseController {
 
     @GetMapping//default endpoint from requestMapping
     @ResponseBody //Let Spring know we are not working with a view in this method, no need if RestController used
-    public List<CourseDTO> getAllCourses(){// Not String html file anymore, but the data
+    public List<CourseDTO> getAllCourses() {// Not String html file anymore, but the data
         return courseService.getCourses();
     }
+
     @GetMapping("{id}")
-    public CourseDTO getCourseById(@PathVariable("id") Long id){
+    public CourseDTO getCourseById(@PathVariable("id") Long id) {
         return courseService.getCourseById(id);
     }
+
     @GetMapping("category/{name}")
-    public List<CourseDTO> getCoursesByCategory(@PathVariable("name") String categoryName){
+    public List<CourseDTO> getCoursesByCategory(@PathVariable("name") String categoryName) {
         return courseService.getCoursesByCategory(categoryName);
     }
+
     @PostMapping
-    public CourseDTO createCourse(@RequestBody CourseDTO course){
+    public CourseDTO createCourse(@RequestBody CourseDTO course) {
         return courseService.createCourse(course);
     }
 
     @PutMapping("{id}")      // findById                 Object to be updated
-    public void updateCourse(@PathVariable("id") Long id, @RequestBody CourseDTO courseDTO){
-        courseService.updateCourse(id,courseDTO);
+    public void updateCourse(@PathVariable("id") Long id, @RequestBody CourseDTO courseDTO) {
+        courseService.updateCourse(id, courseDTO);
     }
+
     @DeleteMapping("{id}")
-    public void deleteCourseById(@PathVariable("id") Long id){
+    public void deleteCourseById(@PathVariable("id") Long id) {
         courseService.deleteCourseById(id);
     }
 }
