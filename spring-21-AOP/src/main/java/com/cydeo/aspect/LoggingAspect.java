@@ -49,7 +49,6 @@ public class LoggingAspect {
 
 //    @Pointcut("within(com.cydeo.controller..*)")// all methods inside controller package and its subpackage
 //    public void anyControllerOperation(){}
-//
 //    @Pointcut("@within(org.springframework.stereotype.Service)")//all the methods inside @service annotated classes
 //    public void anyServiceOperation(){}
 //    //combineTwoPointcuts
